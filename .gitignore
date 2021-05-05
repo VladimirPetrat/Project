@@ -1,0 +1,8 @@
+target/*
+pom.*
+.mvn/*
+.idea/
+*.iml
+/build/*
+.allure/
+/allure-results/
