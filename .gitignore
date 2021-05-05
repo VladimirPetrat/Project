@@ -1,5 +1,4 @@
 target/*
-pom.*
 .mvn/*
 .idea/
 *.iml
