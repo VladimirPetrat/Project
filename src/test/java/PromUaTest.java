@@ -12,24 +12,24 @@ import java.util.Properties;
 
 import static org.apache.commons.lang.StringUtils.containsIgnoreCase;
 
-public class PromTestClass extends TestRunner {
+public class PromUaTest extends TestRunner {
 
-    private static final List<String> searchRequests = new ArrayList<>();
-    private static String userLogin;
-    private static String userPassword;
-    private static String userCabinetOrdersPageName;
+    private final List<String> searchRequests = new ArrayList<>();
+    private String userLogin;
+    private String userPassword;
+    private String userCabinetOrdersPageName;
     private HomePage homePage;
 
     @BeforeClass
-    public static void loadTestData() throws IOException {
-        Properties properties = new Properties();
+    public void loadTestData() throws IOException {
+        var properties = new Properties();
         properties.load(new FileInputStream("src/main/resources/testData.properties"));
-        searchRequests.add(properties.getProperty("firstSearchRequest"));
-        searchRequests.add(properties.getProperty("secondSearchRequest"));
-        searchRequests.add(properties.getProperty("thirdSearchRequest"));
-        userLogin = properties.getProperty("userLogin");
-        userPassword = properties.getProperty("userPassword");
-        userCabinetOrdersPageName = properties.getProperty("userCabinetOrdersPageName");
+        searchRequests.add(properties.getProperty("first.search.request"));
+        searchRequests.add(properties.getProperty("second.search.request"));
+        searchRequests.add(properties.getProperty("third.search.request"));
+        userLogin = properties.getProperty("user.login");
+        userPassword = properties.getProperty("user.password");
+        userCabinetOrdersPageName = properties.getProperty("user.cabinet.orders.page.name");
     }
 
     @BeforeMethod
@@ -68,13 +68,13 @@ public class PromTestClass extends TestRunner {
 
     @Test
     public void verifyProductSearch() {
-        String searchProductName = searchRequests.get(1);
-        String actualProductName = homePage
+        var searchProductName = searchRequests.get(1);
+        var actualProductName = homePage
                 .searchFor(searchProductName)
                 .openProduct(1)
                 .getProductPageName();
-        Assert.assertTrue(containsIgnoreCase(actualProductName, searchProductName),
-                "Product page name is incorrect");
+        Assert.assertTrue(containsIgnoreCase(actualProductName,
+                searchProductName), "Product page name is incorrect");
     }
 
     @Test
