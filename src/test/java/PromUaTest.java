@@ -79,7 +79,7 @@ public class PromUaTest extends TestRunner {
 
     @Test
     public void verifyAddProductToBasket() {
-        boolean isBasketEmpty = homePage
+        var isBasketEmpty = homePage
                 .searchFor(searchRequests.get(2))
                 .openProduct(1)
                 .addProductToBasket()
