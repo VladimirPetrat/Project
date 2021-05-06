@@ -21,7 +21,7 @@ public class PromUaTest extends TestRunner {
     private HomePage homePage;
 
     @BeforeClass
-    public void loadTestData() throws IOException {
+    public void setUpTestData() throws IOException {
         var properties = new Properties();
         properties.load(new FileInputStream("src/main/resources/testData.properties"));
         searchRequests.add(properties.getProperty("first.search.request"));
