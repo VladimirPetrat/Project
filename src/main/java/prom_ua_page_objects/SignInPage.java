@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class SignInPage {
 
-    @Step("Sign")
+    @Step("Sign in as customer")
     public SignInFormPage signInAsCustomer() {
         $x("//a[@data-qaid='go_sign_in_customer']").click();
         return new SignInFormPage();
