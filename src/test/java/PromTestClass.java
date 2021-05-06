@@ -19,17 +19,6 @@ public class PromTestClass extends TestRunner {
     private static String userCabinetOrdersPageName;
     private HomePage homePage;
 
-    private static void loadTestData() throws IOException {
-        Properties properties = new Properties();
-        properties.load(new FileInputStream("src/main/resources/testData.properties"));
-        searchRequests.add(properties.getProperty("firstSearchRequest"));
-        searchRequests.add(properties.getProperty("secondSearchRequest"));
-        searchRequests.add(properties.getProperty("thirdSearchRequest"));
-        userLogin = properties.getProperty("userLogin");
-        userPassword = properties.getProperty("userPassword");
-        userCabinetOrdersPageName = properties.getProperty("userCabinetOrdersPageName");
-    }
-
     @BeforeMethod
     public void openHomePage() throws IOException {
         loadTestData();
@@ -85,5 +74,16 @@ public class PromTestClass extends TestRunner {
                 .isBasketEmpty();
         Assert.assertFalse(isBasketEmpty,
                 "Product should be added to basket");
+    }
+
+    private static void loadTestData() throws IOException {
+        Properties properties = new Properties();
+        properties.load(new FileInputStream("src/main/resources/testData.properties"));
+        searchRequests.add(properties.getProperty("firstSearchRequest"));
+        searchRequests.add(properties.getProperty("secondSearchRequest"));
+        searchRequests.add(properties.getProperty("thirdSearchRequest"));
+        userLogin = properties.getProperty("userLogin");
+        userPassword = properties.getProperty("userPassword");
+        userCabinetOrdersPageName = properties.getProperty("userCabinetOrdersPageName");
     }
 }
