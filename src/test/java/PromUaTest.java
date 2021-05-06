@@ -53,7 +53,7 @@ public class PromUaTest extends TestRunner {
 
     @Test
     public void verifyLogin() {
-        String userOrdersPageName = homePage
+        var userOrdersPageName = homePage
                 .openHomePage()
                 .openLoginPage()
                 .signInAsCustomer()
