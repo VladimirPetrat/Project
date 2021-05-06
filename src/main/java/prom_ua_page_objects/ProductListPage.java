@@ -11,6 +11,7 @@ public class ProductListPage {
     @Step("ProductListPage: open product by number {productNumber}")
     public ProductPage openProduct(int productNumber) {
         $x(format("(//a[@data-qaid='product_link'])[%d]", productNumber)).click();
+
         return new ProductPage();
     }
 

@@ -11,6 +11,7 @@ public class ProductPage {
     public BasketPage addProductToBasket() {
         $x("//button[@data-qaid='buy-button']").click();
         switchTo().frame($x("//iframe[@id='shoppingCartIframe']"));
+
         return new BasketPage();
     }
 
